@@ -1,18 +1,19 @@
 (function() {
   'use strict';
 
-  angular.module('module1Solution', [])
-    .controller('LunchCheckerController', LunchCheckerController);
+  angular.module('LunchCheck', [])
+    .controller('LunchCheckController', LunchCheckController);
 
-  LunchCheckerController.$inject = ['$scope'];
+  LunchCheckController.$inject = ['$scope'];
 
-  function LunchCheckerController($scope) {
+  function LunchCheckController($scope) {
     $scope.dishes = "";
 
     $scope.check = function () {
       console.log($scope.dishes);
       if ($scope.dishes == "") {
         $scope.message = "Please enter data first";
+        $scope.style = {"border-color":"red"};
         return;
       }
 
@@ -26,6 +27,7 @@
         }
       }
 
+      $scope.style = {"border-color":"green"};
       if (counter <= 3) {
         $scope.message = "Enjoy!";
       } else {
